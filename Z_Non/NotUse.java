@@ -1,36 +1,37 @@
 import java.util.*;
-public class NonUse{
+import java.lang.*;
+import java.io.*;
 
-   public static int total(String s){
-      Map<Character,Integer> hm = new HashMap<>();
-      int count = 1;
-      hm.put(s.charAt(0), count);
-      for(int i=1; i<s.length(); i++){
-         if(hm.containsKey(s.charAt(i))){
-            count++;
-         }
-         else{
-            count = 1;
-         }
-         hm.put(s.charAt(i), count);
-      }
+public class NotUse
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t-->0){
+		    int n = sc.nextInt();
+		    Map<Integer,Integer> map = new HashMap<>();
+		    int score = 0;
+		    for(int i=0; i<n; i++){
+            int a = sc.nextInt();
+		        if(map.containsKey(a)){
+               score++;
+              }
+              else{
+               score= 1;
+              }
+              map.put(a, score);
+		    }
+          Set<Integer> key = map.keySet();
+          for(int k : key){
+            if(map.get(k)%2!=0){
+               System.out.println(k);
+               break;
 
-      int i=0;
-      
-      while(i<s.length()){
-         if(hm.get(s.charAt(i)) == 1) {
-            return i; 
-         }
-         i++;
-      }
+            }
+          }
+		}
 
-      return -1;
-   }
-
-   public static void main(String[] args) {
-      Scanner sc = new Scanner(System.in);
-      String s = sc.next();
-      
-      System.out.println(total(s));
-   }
+	}
 }
